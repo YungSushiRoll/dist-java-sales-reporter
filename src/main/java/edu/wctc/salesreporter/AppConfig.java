@@ -17,21 +17,21 @@ public class AppConfig {
 
     @Bean
     public SalesInput getInput(){
-        return new ConsoleInput();
-        //return new FileInput();
+        //return new ConsoleInput();
+        return new FileInput();
     }
 
     @Bean
     public ShippingType getType(){
-        //return new FreeShipping();
-        return new HolidayShipping();
+        return new FreeShipping();
+        //return new HolidayShipping();
         //return new FlatRateShipping();
     }
 
     @Bean
     public SalesReport getReport(){
-        //return new DetailReport();
-        return new SummaryReport();
+        return new DetailReport();
+        //return new SummaryReport();
     }
 
     @Bean

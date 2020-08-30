@@ -24,45 +24,30 @@ public class SummaryReport implements SalesReport {
     public void generateReport(List<Sale> salesList) {
 
         for (Sale sale : salesList) {
-            System.out.println(currentIndex);
             if (summaryList.isEmpty()){
-                System.out.println("here1");
                 summaryList.add(sale);
                 totalAmount += Double.parseDouble(summaryList.get(0).getAmount());
                 totalTax += Double.parseDouble(summaryList.get(0).getTax());
                 totalShipping += summaryList.get(0).getShipping();
             } else {
-                System.out.println("here?");
                 for (int x = 0; x < summaryList.size(); x++) {
                     if (sale.getCountry().equalsIgnoreCase(summaryList.get(x).getCountry())) {
-                        System.out.println("hello");
-                        System.out.println(salesList.get(currentIndex).getAmount());
-                        System.out.println(salesList.get(currentIndex).getTax());
-                        System.out.println(salesList.get(currentIndex).getShipping());
 
                         totalAmount = Double.parseDouble(summaryList.get(x).getAmount()) + Double.parseDouble(salesList.get(currentIndex).getAmount());
-                        System.out.println(totalAmount);
                         totalTax =  Double.parseDouble(summaryList.get(x).getTax()) + Double.parseDouble(salesList.get(currentIndex).getTax());
-                        System.out.println(totalTax);
                         totalShipping = summaryList.get(x).getShipping() +  salesList.get(currentIndex).getShipping();
-                        System.out.println(totalShipping);
 
                         summaryList.get(x).setAmount(Double.toString(totalAmount));
                         summaryList.get(x).setTax(Double.toString(totalTax));
                         summaryList.get(x).setShipping(totalShipping);
-                        System.out.println("were done");
-                        System.out.println("were about to break");
                         isNotAMatch = false;
+
                         break;
                     } else {
-                        System.out.println(isNotAMatch);
-                        System.out.println("howd we get here");
                         isNotAMatch = true;
                     }
                 }
                 if (isNotAMatch) {
-                    System.out.println(isNotAMatch);
-                    System.out.println("here");
                     summaryList.add(sale);
                 }
                 currentIndex++;

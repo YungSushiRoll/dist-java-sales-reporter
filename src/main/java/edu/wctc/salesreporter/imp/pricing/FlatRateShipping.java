@@ -14,10 +14,10 @@ public class FlatRateShipping implements ShippingType {
             return 7.25;
         } else if (Double.parseDouble(sale.getAmount()) >= 30.00){
             return 4.35;
-        } else if (Double.parseDouble(sale.getAmount()) <= 15.00){
+        } else if (Double.parseDouble(sale.getAmount()) > 15.00){
             return 2.25;
         } else {
-            return 99.99;
+            return 1.00;
         }
     }
 }
